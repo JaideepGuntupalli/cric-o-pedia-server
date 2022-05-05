@@ -35,7 +35,7 @@ MVP should be done by 31 Apr 2022.
 
 ### Links
 
--   Website: [Link to Deployment](#)
+-   Website: [Link to Deployment](https://cric-o-pedia.live)
 
 ## My process
 
