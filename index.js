@@ -23,36 +23,34 @@ app.get("/homeMatches", async (req, res) => {
             const cusResponse = [];
             const data = response.data.matches;
             data.map((ele) => {
-                if (ele.series.alternateName === "IPL") {
-                    let newTeams = [];
-                    ele.teams.map((team) => {
-                        let newTeamImage = {
-                            url: sqImgURL + team.team.image.url,
-                            caption: team.team.image.caption,
-                        };
-                        let newTeam = {
-                            slug: team.team.slug,
-                            name: team.team.name,
-                            longName: team.team.longName,
-                            abbreviation: team.team.abbreviation,
-                            image: newTeamImage,
-                            score: team.score,
-                            scoreInfo: team.scoreInfo,
-                            inningNumbers: team.inningNumbers[0],
-                        };
-                        newTeams.push(newTeam);
-                    });
-                    let newJSON = {
-                        id: ele.objectId,
-                        slug: ele.slug,
-                        state: ele.state,
-                        startTime: ele.startTime,
-                        statusText: ele.statusText,
-                        teams: newTeams,
+                let newTeams = [];
+                ele.teams.map((team) => {
+                    let newTeamImage = {
+                        url: sqImgURL + team.team.image.url,
+                        caption: team.team.image.caption,
                     };
-                    // console.log(ele);
-                    cusResponse.push(newJSON);
-                }
+                    let newTeam = {
+                        slug: team.team.slug,
+                        name: team.team.name,
+                        longName: team.team.longName,
+                        abbreviation: team.team.abbreviation,
+                        image: newTeamImage,
+                        score: team.score,
+                        scoreInfo: team.scoreInfo,
+                        inningNumbers: team.inningNumbers[0],
+                    };
+                    newTeams.push(newTeam);
+                });
+                let newJSON = {
+                    id: ele.objectId,
+                    slug: ele.slug,
+                    state: ele.state,
+                    startTime: ele.startTime,
+                    statusText: ele.statusText,
+                    teams: newTeams,
+                };
+                // console.log(ele);
+                cusResponse.push(newJSON);
             });
             res.status(200).json(cusResponse);
         })
