@@ -52,6 +52,7 @@ app.get("/homeMatches", async (req, res) => {
                     id: ele.objectId,
                     slug: ele.slug,
                     state: ele.state,
+                    series: ele.series.name,
                     startTime: ele.startTime,
                     statusText: ele.statusText,
                     teams: newTeams,
