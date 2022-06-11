@@ -26,9 +26,16 @@ app.get("/homeMatches", async (req, res) => {
                 let newTeams = [];
                 ele.teams.map((team) => {
                     let newTeamImage = {
-                        url: sqImgURL + team.team.image.url,
-                        caption: team.team.image.caption,
+                        url: "https://cdn-icons-png.flaticon.com/512/2160/2160173.png",
+                        caption: "Unknown team logo",
                     };
+                    if (team.team.image !== null) {
+                        newTeamImage = {
+                            url: sqImgURL + team.team.image.url,
+                            caption: team.team.image.caption,
+                        };
+                    }
+
                     let newTeam = {
                         slug: team.team.slug,
                         name: team.team.name,
